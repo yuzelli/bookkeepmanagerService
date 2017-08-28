@@ -44,6 +44,38 @@ public class UserInfoServlet extends HttpServlet {
 		} 
 	}
 
+	private void Updata(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
+		try {
+			int userID = Integer.parseInt(req.getParameter("id"));
+			String phone = req.getParameter("phone");
+			String name = MyStringUtlis.toUTFString(req, "name");
+			String password = MyStringUtlis.toUTFString(req, "password");
+			
+			UserBean userInfo = new UserBean();
+			userInfo.setUser_id(userID);
+			userInfo.setName(name);
+			userInfo.setPassWord(password);
+			userInfo.setPhone(phone);
+
+			UserBean user = userInfoBiz.updateUserInfoByID(userID, userInfo);
+			if (user != null) {
+				MyError error = new MyError();
+				error.setError("ok");
+				error.setObject(user);
+				JSONObject jsonObject = JSONObject.fromObject(error);
+				resp.getWriter().print(jsonObject);
+			} else {
+				MyError error = new MyError();
+				error.setError("error");
+				JSONObject jsonObject = JSONObject.fromObject(error);
+				resp.getWriter().print(jsonObject);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * 登陆用户
 	 * 
@@ -87,10 +119,11 @@ public class UserInfoServlet extends HttpServlet {
 		try {
 			String phone = req.getParameter("phone");
 			String passWord = req.getParameter("passWord");
-			
+			String name = req.getParameter("name");
 			UserBean userInfo = new UserBean();
 			userInfo.setPhone(phone);
 			userInfo.setPassWord(passWord);
+			userInfo.setName(name);
 			
 
 			UserBean userInfo2 = userInfoBiz.registerUserInfo(userInfo);
