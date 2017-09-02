@@ -12,6 +12,17 @@
 		<servlet-name>userInfoServlet</servlet-name>
 		<servlet-class>servlet.UserInfoServlet</servlet-class>
 	</servlet>
+	
+	  
+  	<servlet>
+		<servlet-name>copyServlet</servlet-name>
+		<servlet-class>servlet.CopyServlet</servlet-class>
+	</servlet>
+  	<servlet-mapping>
+		<servlet-name>copyServlet</servlet-name>
+		<url-pattern>/copyServlet</url-pattern>
+	</servlet-mapping>
+	
   	<servlet-mapping>
 		<servlet-name>userInfoServlet</servlet-name>
 		<url-pattern>/userInfoServlet</url-pattern>
