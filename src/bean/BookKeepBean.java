@@ -20,8 +20,18 @@ public class BookKeepBean implements Serializable {
     private String money;
     private long time ;
     private String phone;
+    
+    
 
-    public String getWeek() {
+    public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getWeek() {
         return week;
     }
 

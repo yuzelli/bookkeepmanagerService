@@ -69,7 +69,7 @@ public class UserInfoDaoImpl implements UserInfoDao{
 		
 		int num = DataBaseUtil.executeUpdate(
 					sqlStr,
-					new Object[] {user.getPhone(), user.getPassWord(),user.getName(),user.getPhone(),});
+					new Object[] {user.getPhone(), user.getPassWord(),user.getName(),user.getPhone()});
 		if(num>0){    
 		  userInfo = findUserInfoByPhone(user.getPhone());
 		}

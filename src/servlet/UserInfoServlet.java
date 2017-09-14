@@ -47,18 +47,18 @@ public class UserInfoServlet extends HttpServlet {
 	private void Updata(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO Auto-generated method stub
 		try {
-			int userID = Integer.parseInt(req.getParameter("id"));
+			
 			String phone = req.getParameter("phone");
 			String name = MyStringUtlis.toUTFString(req, "name");
-			String password = MyStringUtlis.toUTFString(req, "password");
+			String password = MyStringUtlis.toUTFString(req, "passWord");
 			
 			UserBean userInfo = new UserBean();
-			userInfo.setUser_id(userID);
+			userInfo.setUser_id(1);
 			userInfo.setName(name);
 			userInfo.setPassWord(password);
 			userInfo.setPhone(phone);
 
-			UserBean user = userInfoBiz.updateUserInfoByID(userID, userInfo);
+			UserBean user = userInfoBiz.updateUserInfoByID(1, userInfo);
 			if (user != null) {
 				MyError error = new MyError();
 				error.setError("ok");
